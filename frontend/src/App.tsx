@@ -1,6 +1,7 @@
 import { ConnectButton } from "@mysten/dapp-kit";
 import { Box, Container, Flex, Heading } from "@radix-ui/themes";
 import { WalletStatus } from "./WalletStatus";
+import { TwitterLogin } from "./TwitterLogin";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Heading>dApp Starter Template</Heading>
         </Box>
 
-        <Box>
+        <Box style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <TwitterLogin />
           <ConnectButton />
         </Box>
       </Flex>
