@@ -1,38 +1,126 @@
+# 🏃‍♂️ Sui Run Club
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A Next.js application for minting SBT (Soul Bound Tokens) NFTs on the Sui blockchain with Twitter authentication.
 
-## Getting Started
+## ✨ Features
 
-First, run the development server:
+- **User Authentication**: Twitter/X OAuth integration
+- **Blockchain Integration**: Sui NFT minting with PTB
+- **Modern UI**: DaisyUI components with smooth animations
+- **Form Validation**: Multi-step form with validation
 
+## 🚀 Quick Start
+
+### 1. Clone and Install
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo>
+cd sui-run-club
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Environment Setup
+Copy the example environment file:
+```bash
+cp .env.example .env.local
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Configure Environment Variables
+Update your `.env.local` file with:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### Twitter OAuth:
+```env
+TWITTER_CLIENT_ID="your-twitter-client-id"
+TWITTER_CLIENT_SECRET="your-twitter-client-secret"
+```
 
-## Learn More
+#### Sui Blockchain:
+```env
+SUI_PACKAGE_ID="0x1234567890abcdef..."
+USER_SECRET_KEY="suiprivkey1..."
+SUI_NUMBER_TABLE_ID="0x..."
+SUI_ADDRESS_TABLE_ID="0x..."
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Start Development
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+sui-run-club/
+├── app/
+│   ├── api/
+│   │   └── mint/route.ts        # NFT minting API
+│   ├── auth/
+│   └── layout.tsx
+├── components/
+│   └── StepForm.tsx            # Main form component
+├── lib/
+│   ├── sui.ts                  # Blockchain integration
+│   └── auth.ts                 # NextAuth config
+└── nft/
+    └── sources/nft.move        # Sui NFT contract
+```
 
-## Deploy on Vercel
+## 🔧 Available Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌐 API Endpoints
 
+### POST `/api/mint`
+Mint NFT on Sui blockchain
+```javascript
+fetch('/api/mint', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    suiAddress: '0x...',
+    sbtNumber: 42
+  })
+});
+```
+
+## 🔐 Environment Variables
+
+See `.env.example` for all required environment variables:
+
+- `NEXTAUTH_SECRET` - NextAuth secret key
+- `TWITTER_CLIENT_ID` - Twitter OAuth client ID
+- `TWITTER_CLIENT_SECRET` - Twitter OAuth client secret
+- `SUI_PACKAGE_ID` - Sui package ID
+- `USER_SECRET_KEY` - Sui user secret key
+- `SUI_NUMBER_TABLE_ID` - Sui number table object ID
+- `SUI_ADDRESS_TABLE_ID` - Sui address table object ID
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS, DaisyUI
+- **Authentication**: NextAuth.js
+- **Blockchain**: Sui, @mysten/sui
+- **Deployment**: Vercel (recommended)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+MIT License - see LICENSE file for details
+
+## 🆘 Support
+
+If you encounter any issues:
+1. Check the console for error messages
+2. Verify all environment variables are set
+3. Ensure Sui blockchain credentials are correct
+4. Check Twitter OAuth configuration
