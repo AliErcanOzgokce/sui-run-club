@@ -4,7 +4,7 @@ import { fromBase64 } from "@mysten/sui/utils";
 import { SuiClient } from "@mysten/sui/client";
 
 const suiClient = new SuiClient({
-  url: "https://fullnode.testnet.sui.io:443"
+  url: "https://fullnode.mainnet.sui.io:443"
 });
 
 export const getSigner = ({ secretKey }: { secretKey: string }) => {
